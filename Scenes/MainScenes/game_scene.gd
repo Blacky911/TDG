@@ -11,7 +11,7 @@ var build_location
 var build_type
 
 var current_wave = 0
-var max_wave = 3
+var max_wave = 10
 var enemies_in_wave = 0
 
 var base_health = 100
