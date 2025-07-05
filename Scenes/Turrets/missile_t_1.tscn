@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=3 uid="uid://q5yxidy8v0v"]
+
+[ext_resource type="Script" uid="uid://ublul0vnuh7m" path="res://Scenes/Turrets/missile_t_1.gd" id="1_7ukwv"]
+[ext_resource type="Texture2D" uid="uid://b54pnou635xdc" path="res://Assets/Towers/towerDefense_tile180.png" id="1_hey2t"]
+[ext_resource type="Texture2D" uid="uid://dkhrrxhso3dxi" path="res://Assets/Towers/towerDefense_tile228.png" id="2_7ukwv"]
+[ext_resource type="Texture2D" uid="uid://ce6s56rukqvya" path="res://Assets/Towers/towerDefense_tile251.png" id="3_qaqgq"]
+[ext_resource type="Texture2D" uid="uid://uxsraojbgolj" path="res://Assets/Effects/towerDefense_tile297.png" id="5_qaqgq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ukwv"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_qaqgq"]
+resource_name = "FireMissileOne"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/MissileOne/MissileOneMotor/MissileOneMotorFire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/MissileOne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_1eh4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/MissileOne/MissileOneMotor/MissileOneMotorFire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/MissileOne:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Turret/MissileTwo/MissileTwoMotor/MissileTwoMotorFire:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Turret/MissileTwo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_axnb8"]
+resource_name = "FireMissileTwo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/MissileTwo/MissileTwoMotor/MissileTwoMotorFire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/MissileTwo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_by1mo"]
+_data = {
+&"FireMissileOne": SubResource("Animation_qaqgq"),
+&"FireMissileTwo": SubResource("Animation_axnb8"),
+&"RESET": SubResource("Animation_1eh4u")
+}
+
+[node name="MissileT1" type="Node2D"]
+script = ExtResource("1_7ukwv")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_hey2t")
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("2_7ukwv")
+
+[node name="MissileOne" type="Sprite2D" parent="Turret"]
+texture = ExtResource("3_qaqgq")
+offset = Vector2(8, -8)
+
+[node name="MissileOneMotor" type="Marker2D" parent="Turret/MissileOne"]
+position = Vector2(-8, -8)
+
+[node name="MissileOneMotorFire" type="Sprite2D" parent="Turret/MissileOne/MissileOneMotor"]
+visible = false
+position = Vector2(-10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_qaqgq")
+flip_h = true
+
+[node name="MissileTwo" type="Sprite2D" parent="Turret"]
+texture = ExtResource("3_qaqgq")
+offset = Vector2(8, 8)
+
+[node name="MissileTwoMotor" type="Marker2D" parent="Turret/MissileTwo"]
+position = Vector2(-8, 8)
+
+[node name="MissileTwoMotorFire" type="Sprite2D" parent="Turret/MissileTwo/MissileTwoMotor"]
+visible = false
+position = Vector2(-10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_qaqgq")
+flip_h = true
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_7ukwv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_by1mo")
+}
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

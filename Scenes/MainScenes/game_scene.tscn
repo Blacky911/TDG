@@ -1,0 +1,240 @@
+[gd_scene load_steps=17 format=3 uid="uid://bb3boevrkds1k"]
+
+[ext_resource type="PackedScene" uid="uid://d3nfb6oik6dc5" path="res://Scenes/Maps/map_01.tscn" id="1_akvmk"]
+[ext_resource type="Script" uid="uid://c5rtd65b7ytqj" path="res://Scenes/MainScenes/game_scene.gd" id="1_g2kuy"]
+[ext_resource type="Texture2D" uid="uid://cukvofrr4k4ep" path="res://Assets/Towers/towerDefense_tile249.png" id="3_2u2le"]
+[ext_resource type="Script" uid="uid://u7pyaa1y4t1c" path="res://Scenes/MainScenes/ui.gd" id="3_ibdpl"]
+[ext_resource type="Texture2D" uid="uid://ce6s56rukqvya" path="res://Assets/Towers/towerDefense_tile251.png" id="4_g2kuy"]
+[ext_resource type="Texture2D" uid="uid://ce6b0f4ou1b73" path="res://Scenes/button_square_line.png" id="4_jvyjn"]
+[ext_resource type="Texture2D" uid="uid://dbcigf6dnlg7n" path="res://Assets/Towers/towerDefense_tile250.png" id="6_541wh"]
+[ext_resource type="Texture2D" uid="uid://ch5bbb83b4r4d" path="res://Assets/Icons/right.png" id="7_674w2"]
+[ext_resource type="Texture2D" uid="uid://cq2l2gjrpjwu2" path="res://Assets/Icons/pause.png" id="8_a0jnf"]
+[ext_resource type="Texture2D" uid="uid://by35jdx3bdtrk" path="res://Assets/Icons/fastForward.png" id="9_clpeu"]
+[ext_resource type="FontFile" uid="uid://7lgsqoq0sbod" path="res://Resources/Fonts/kfn_50.tres" id="10_0h1f8"]
+[ext_resource type="FontFile" uid="uid://catk1gl2mjvfu" path="res://Resources/Fonts/kfn_32.tres" id="11_sl8sw"]
+[ext_resource type="Texture2D" uid="uid://dn1p0s58c50ul" path="res://Assets/Icons/towerDefense_tile289.png" id="12_jvyjn"]
+[ext_resource type="Texture2D" uid="uid://b5nq2oug21nsi" path="res://Assets/UI/HPbar.jpg" id="13_541wh"]
+[ext_resource type="Texture2D" uid="uid://dcdo3xxqm0yjj" path="res://Assets/Icons/cross.png" id="14_sl8sw"]
+[ext_resource type="FontFile" uid="uid://qtwonv15e2gk" path="res://Resources/Fonts/kfn_100.tres" id="16_541wh"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_g2kuy")
+
+[node name="Map01" parent="." instance=ExtResource("1_akvmk")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_ibdpl")
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BuildBar" type="VBoxContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -500.0
+offset_right = 100.0
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="Gun" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_jvyjn")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2u2le")
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("11_sl8sw")
+text = "50 $"
+horizontal_alignment = 1
+
+[node name="Cannon" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_jvyjn")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Cannon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_541wh")
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Cannon"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("11_sl8sw")
+text = "100 $"
+horizontal_alignment = 1
+
+[node name="Missile" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_jvyjn")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Missile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_g2kuy")
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Missile"]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("11_sl8sw")
+text = "250 $"
+horizontal_alignment = 1
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -100.0
+offset_right = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("7_674w2")
+texture_pressed = ExtResource("8_a0jnf")
+stretch_mode = 0
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_clpeu")
+stretch_mode = 0
+
+[node name="InfoBar" type="ColorRect" parent="UI/HUD"]
+self_modulate = Color(0, 0, 0, 0.501961)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="H" type="HBoxContainer" parent="UI/HUD/InfoBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Symbol" type="Label" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.752941)
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 48
+text = "$"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.752941)
+theme_override_fonts/font = ExtResource("11_sl8sw")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("12_jvyjn")
+
+[node name="HP" type="TextureProgressBar" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(400, 32)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("13_541wh")
+texture_progress = ExtResource("13_541wh")
+tint_under = Color(0.25098, 0.25098, 0.25098, 1)
+tint_progress = Color(0, 0.878431, 0, 1)
+
+[node name="Control" type="Control" parent="UI/HUD/InfoBar/H"]
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="UI/HUD/InfoBar/H"]
+process_mode = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("14_sl8sw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextOverlay" type="Label" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("16_541wh")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]
+[connection signal="pressed" from="UI/HUD/InfoBar/H/Quit" to="UI" method="_on_quit_pressed"]
